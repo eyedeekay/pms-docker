@@ -49,6 +49,8 @@ ARG URL=
 
 COPY root/ /
 
+RUN chown -R plex:plex /config /transcode /data
+
 RUN \
 # Save version and install
     /installBinary.sh
