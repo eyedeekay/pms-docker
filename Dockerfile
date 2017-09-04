@@ -14,6 +14,7 @@ RUN \
       curl \
       xmlstarlet \
       uuid-runtime \
+      python3-pip \
     && \
 
 # Fetch and extract S6 overlay
@@ -52,6 +53,8 @@ COPY root/ /
 RUN chown -R plex:plex /config /transcode /data
 
 RUN /installBinary.sh
+
+RUN pip install plexurl
 
 HEALTHCHECK --interval=200s --timeout=100s CMD /healthcheck.sh || exit 1
 
